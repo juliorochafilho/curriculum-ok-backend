@@ -1,14 +1,7 @@
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
 import { Job } from 'src/jobs/entities/job.entity';
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-
 @Entity()
-export class User {
+export class Company {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -28,15 +21,15 @@ export class User {
     nullable: false,
     default: '',
   })
-  first_name: string;
+  fantasy_name: string;
 
   @Column({
     nullable: false,
     default: '',
   })
-  last_name: string;
+  ruc: string;
 
-  @ManyToMany(() => Job)
-  @JoinTable()
-  jobs: Job[];
+  @OneToMany(() => Job, (job) => job.company)
+  jobs: Job[]
+
 }

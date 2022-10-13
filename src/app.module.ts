@@ -3,6 +3,10 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CompaniesModule } from './companies/companies.module';
+import { JobsModule } from './jobs/jobs.module';
+import { Job } from './jobs/entities/job.entity';
+import { Company } from './companies/entities/company.entity';
 
 @Module({
   imports: [
@@ -16,12 +20,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [User],
+        entities: [User, Job, Company],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
     UsersModule,
+    CompaniesModule,
+    JobsModule,
   ],
   controllers: [],
   providers: [],
