@@ -7,6 +7,7 @@ import { CompaniesModule } from './companies/companies.module';
 import { JobsModule } from './jobs/jobs.module';
 import { Job } from './jobs/entities/job.entity';
 import { Company } from './companies/entities/company.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { Company } from './companies/entities/company.entity';
     UsersModule,
     CompaniesModule,
     JobsModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
