@@ -11,5 +11,5 @@ export class CreateJobDto {
   salary: string;
 
   @IsNotEmpty()
-  company: string;
+  company: any;
 }
